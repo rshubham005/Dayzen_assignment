@@ -98,16 +98,17 @@ const NewNote = () => {
       nevigate("/");
     }
   };
-  const handleBack=()=>
-  {
-    if(form_data.title!==""||form_data.body.length>0)
-    {
-      if(window.confirm("Nevigating to next screen will discard changes. Do you still want to proceed"))
-      {
-        nevigate('/')
+  const handleBack = () => {
+    if (form_data.title !== "" || form_data.body.length > 0) {
+      if (
+        window.confirm(
+          "Nevigating to next screen will discard changes. Do you still want to proceed"
+        )
+      ) {
+        nevigate("/");
       }
     }
-  }
+  };
   return (
     <div className="main">
       <div className="notes_body p-5 container">
