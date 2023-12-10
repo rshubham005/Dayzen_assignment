@@ -1,24 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import Notes from "./Components/Home/Notes";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "@fontsource/roboto";
+import NewNote from "./Components/NewNote/NewNote";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Note from "./Components/Note/Note";
+import { Provider } from "react-redux";
+import store from "./store";
 
 function App() {
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: <Notes />,
+    },
+    {
+      path: "/addnote",
+      element: <NewNote />,
+    },
+    {
+      path: "/note/:id",
+      element: <Note />,
+    },
+  ]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Provider store={store}>
+      <div className="m-0">
+        {/* <Notes /> */}
+        <RouterProvider router={router} />
+      </div>
+    </Provider>
   );
 }
 
