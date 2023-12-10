@@ -33,6 +33,7 @@ const NewNote = () => {
     time: `${d.getHours()}:${d.getMinutes()}  ${d.getDay()}/${d.getMonth()}`,
   });
   const [textBox, set_textBox] = useState("");
+  // eslint-disable-next-line
   const [selectedImage, setSelectedImage] = useState(null);
   const handleImageChange = (e) => {
     const file = e.target.files[0];
@@ -83,6 +84,7 @@ const NewNote = () => {
     }
   };
   const handleFormSubmit = () => {
+    // eslint-disable-next-line
     if (textBox == "") {
       dispatch(AddNoteAction(form_data));
       nevigate("/");
@@ -96,12 +98,25 @@ const NewNote = () => {
       nevigate("/");
     }
   };
+  const handleBack=()=>
+  {
+    if(form_data.title!==""||form_data.body.length>0)
+    {
+      if(window.confirm("Nevigating to next screen will discard changes. Do you still want to proceed"))
+      {
+        nevigate('/')
+      }
+    }
+  }
   return (
     <div className="main">
       <div className="notes_body p-5 container">
         <div className="title_head d-flex justify-content-between w-100">
           <h3 className="icon">
-            <FaArrowLeftLong />
+            <FaArrowLeftLong
+              style={{ cursor: "pointer" }}
+              onClick={() => handleBack()}
+            />
           </h3>
           <button className="page_btn" onClick={() => handleFormSubmit()}>
             Save
@@ -183,7 +198,6 @@ const NewNote = () => {
                 accept="audio/mp3, audio/wav, audio/Ogg"
                 onChange={handleAudioChange}
               />
-              
             </div>
           </div>
         </div>
