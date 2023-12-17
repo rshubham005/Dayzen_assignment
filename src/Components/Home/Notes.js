@@ -8,6 +8,7 @@ const Notes = () => {
   const [notes_data, set_notes_data] = useState(
     useSelector((state) => state.NoteReducer)
   );
+  console.log("Notes Data", notes_data)
   const nevigate = useNavigate();
   return (
     <>
@@ -25,7 +26,7 @@ const Notes = () => {
             </button>
           </div>
           <div className="notes_block">
-            {notes_data.map((item, index) => {
+            {notes_data?.map((item, index) => {
               return (
                 <div
                   className="note"

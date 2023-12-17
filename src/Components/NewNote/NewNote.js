@@ -27,7 +27,7 @@ const NewNote = () => {
   };
   let previous_data = useSelector((state) => state.NoteReducer);
   const [form_data, set_form_data] = useState({
-    id: previous_data.length + 1,
+    id: previous_data?.length + 1,
     title: "",
     body: [],
     time: `${d.getHours()}:${d.getMinutes()}  ${d.getDay()}/${d.getMonth()}`,

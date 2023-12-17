@@ -23,7 +23,6 @@ function App() {
       element: <Note />,
     },
   ]);
-
   return (
     <Provider store={store}>
       <div className="m-0">
