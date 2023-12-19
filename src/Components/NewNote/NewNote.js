@@ -94,7 +94,7 @@ const NewNote = () => {
       set_form_data({ ...form_data, body: bodySection });
       set_textBox("");
       console.log(form_data);
-      dispatch(AddNoteAction(form_data));
+      dispatch(AddNoteAction({ ...form_data, body: bodySection }));
       nevigate("/");
     }
   };
@@ -193,7 +193,7 @@ const NewNote = () => {
               </label>
               <input
                 type="file"
-                id="audio_file"
+                id="audio_label"
                 name="avatar"
                 className="d-none"
                 accept="audio/mp3, audio/wav, audio/Ogg"
